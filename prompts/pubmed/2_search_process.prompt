@@ -1,0 +1,22 @@
+<USER REQUEST>
+[user_request]
+</USER REQUEST>
+
+<SEARCH RESULT>
+[search_results]
+</SEARCH RESULT>
+
+<INSTRUCTION>
+Extract the list of researches from <SEARCH RESULT>, relevant to <USER REQUEST>.
+
+In output always use JSON snippet, and json format with double quotes, using json schema:
+```json
+[
+    {
+        "source_url": "full url to the research",
+        "name": "research name",
+        "summary": "short summary"
+    },
+    ... other researches
+]
+```

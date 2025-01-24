@@ -1,0 +1,10 @@
+.DS_Store
+.idea
+venv
+.env
+**/__pycache__
+
+/tmp/pubmed_fixtures/*
+/tmp/*
+!/tmp/.keep
+
