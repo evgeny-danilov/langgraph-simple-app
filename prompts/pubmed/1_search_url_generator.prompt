@@ -1,0 +1,30 @@
+<USER REQUEST>
+[user_request]
+</USER REQUEST>
+
+
+<URL EXAMPLES>
+1. Filtering by two keywords "diabetes" and "prevention"
+https://pubmed.ncbi.nlm.nih.gov/?term=%28diabetes%29+AND+%28prevention%29
+Note: each keyword should be wrapped by "()" and join by "AND"
+
+2. Filtering by date range (2024.01.19 - 2025.01.19)
+https://pubmed.ncbi.nlm.nih.gov/?filter=dates.2024%2F1%2F19-2025%2F1%2F19
+
+3. Sorting by most recent items
+https://pubmed.ncbi.nlm.nih.gov/?sort=date
+</URL EXAMPLES>
+
+<INSTRUCTION>
+Generate URL for searching, according to <USER REQUEST>. Take into account <URL EXAMPLES>
+Extract the list of relevant researches from <SEARCH RESULT>
+
+In output always use JSON snippet, and json format with double quotes, using json schema:
+```json
+{
+    "keywords": "<extract MeSH keywords from USER REQUEST, useful for publication search. Avoid additional words like "research", "latest", while keeping only MeSH-related words>",
+    "date_range": "<extract date range from USER REQUEST, taking into account today is {{today}}. Leave empty if user doesn't request specific date range>",
+    "sort:" "<Print 'sort=date' if USER REQUEST contains request for latest/recent items. Otherwise, leave empty>",
+    "url": "<build full html URL, taking into account URL EXAMPLES, extracted keywords, sort and date range. Always as additional parameter size={{results_count}}>"
+}
+```
